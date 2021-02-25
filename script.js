@@ -62,7 +62,7 @@ id = (text) => {
 
         $('#cement').append(rect);
       }
-      if (rightselectedShape == 'ellipse') {
+      else if (rightselectedShape == 'ellipse') {
         const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
 
         const midH = this.offsetHeight / 2.0;
@@ -79,7 +79,7 @@ id = (text) => {
 
         $('#cement').append(ellipse);
       }
-      if (rightselectedShape == 'pentagon') {
+      else if (rightselectedShape == 'pentagon') {
         const h = this.offsetHeight;
         const w = this.offsetWidth;
 
@@ -89,16 +89,21 @@ id = (text) => {
 
         $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
+      else if (rightselectedShape == 'hexagon') {
+        const h = this.offsetHeight;
+        const w = this.offsetWidth;
+
+        const midW = w / 2.0;
+        const hp = h * 0.266;
+
+        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+      }
     }
   })
 
   $('#left-menu circle').click(function() {
     if (!leftselected) { leftselected = true; }
-    else {
-      leftselectedButton.setAttribute('r', 15);
-      leftselectedButton.setAttribute('stroke', 'none');
-    }
-    $(this)[0].setAttribute('r', 19);
+    else { leftselectedButton.setAttribute('stroke', 'none'); }
     leftselectedButton = this;
     leftselectedColor = this.attributes.fill.value;
     $(this)[0].setAttribute('stroke', 'white');
@@ -107,9 +112,7 @@ id = (text) => {
 
   $('#right-menu polygon, #right-menu circle, #right-menu rect').click(function() {
     if (!rightselected) { rightselected = true; }
-    else {
-      rightselectedButton.setAttribute('stroke', 'none');
-    }
+    else { rightselectedButton.setAttribute('stroke', 'none'); }
     rightselectedButton = this;
     rightselectedShape = this.attributes.class.value;
     $(this)[0].setAttribute('stroke', 'white');
@@ -162,6 +165,12 @@ polyresize = (tag, cla, w, h) => {
       const midH = h * 0.361;
 
       $('polygon' + '.' + cla)[0].attributes.points.value = String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH);
+    }
+    else if (name == 'hexagon') {
+      const midW = w / 2.0;
+      const hp = h * 0.266;
+
+      $('polygon' + '.' + cla)[0].attributes.points.value = String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp);
     }
   }
 }
