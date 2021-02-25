@@ -1,4 +1,9 @@
-$(() => $('#inp')[0].attributes.cols.value = $(window).width() / 15 );
+$(() => resize() );
+
+resize = () => {
+  $('#inp')[0].attributes.cols.value = $(window).width() / 15;
+  $('#inp')[0].attributes.rows.value = $(window).height() / 25;
+}
 
 let j = 0;
 let leftselected = false;
@@ -105,6 +110,7 @@ id = (text) => {
 $(window).resize(() => {
 
   $('#inp')[0].attributes.cols.value = $(window).width() / 15;
+  $('#inp')[0].attributes.rows.value = $(window).height() / 25;
 
   const boxes = $('div#box');
   for (box of boxes) {
