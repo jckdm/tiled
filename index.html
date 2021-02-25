@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Tiles</title>
+</head>
+<body>
+  <div class="overlay">
+    <div class="overlay-content">
+      <p>Enter text below.</p>
+      <form>
+        <textarea id="inp" rows="40" cols="30"></textarea>
+        <br><br>
+        <input type="button" onclick="go()" value="Submit Text">
+      </form>
+    </div>
+  </div>
+  <div id="left-menu">
+      <svg height="300px">
+        <circle cx="25" cy="50" r="15" fill="red"/>
+        <circle cx="25" cy="100" r="15" fill="green"/>
+        <circle cx="25" cy="150" r="15" fill="blue"/>
+        <circle cx="25" cy="200" r="15" fill="yellow"/>
+        <circle cx="25" cy="250" r="15" fill="purple"/>
+      </svg>
+  </div>
+  <div id="right-menu">
+      <svg height="300px">
+        <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" fill="gray"/>
+        <rect class="rect" x="10" y="85" height="30" width="30" fill="gray"/>
+        <circle class="ellipse" cx="25" cy="150" r="15" fill="gray"/>
+        <polygon class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" fill="gray"/>
+        <polygon class="triangle" points="10 265, 25 235, 40 265" fill="gray"/>
+      </svg>
+  </div>
+</body>
+</html>
