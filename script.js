@@ -50,13 +50,18 @@ id = (text) => {
 
       $('#box').attr('onClick', 'this.remove();')
 
+      const h = this.offsetHeight;
+      const w = this.offsetWidth;
+      const midH = this.offsetHeight / 2.0;
+      const midW = this.offsetWidth / 2.0;
+
       if (rightselectedShape == 'rect') {
         const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
         rect.setAttribute('stroke', 'white');
         rect.setAttribute('stroke-width', 1);
-        rect.setAttribute('height', this.offsetHeight);
-        rect.setAttribute('width', this.offsetWidth);
+        rect.setAttribute('height', h);
+        rect.setAttribute('width', w);
         rect.setAttribute('fill', leftselectedColor);
         rect.setAttribute('class', this.id);
 
@@ -64,9 +69,6 @@ id = (text) => {
       }
       else if (rightselectedShape == 'ellipse') {
         const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
-
-        const midH = this.offsetHeight / 2.0;
-        const midW = this.offsetWidth / 2.0;
 
         ellipse.setAttribute('stroke', 'white');
         ellipse.setAttribute('stroke-width', 1);
@@ -80,23 +82,13 @@ id = (text) => {
         $('#cement').append(ellipse);
       }
       else if (rightselectedShape == 'pentagon') {
-        const h = this.offsetHeight;
-        const w = this.offsetWidth;
-
-        const midW = w / 2.0;
-        const qW = w * 0.3195;
-        const midH = h * 0.361;
-
-        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + pentagon(h, w, midW, midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
       else if (rightselectedShape == 'hexagon') {
-        const h = this.offsetHeight;
-        const w = this.offsetWidth;
-
-        const midW = w / 2.0;
-        const hp = h * 0.266;
-
-        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + hexagon(h, w, midW, midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+      }
+      else if (rightselectedShape == 'triangle') {
+        $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
     }
   })
@@ -143,13 +135,14 @@ $(window).resize(() => {
 })
 
 polyresize = (tag, cla, w, h) => {
+  const midW = w / 2.0;
+  const midH = h / 2.0;
+
   if (tag == 'rect') {
     $('rect' + '.' + cla)[0].setAttribute('width', w);
     $('rect' + '.' + cla)[0].setAttribute('height', h);
   }
   else if (tag == 'ellipse') {
-    const midW = w / 2.0;
-    const midH = h / 2.0;
     $('ellipse' + '.' + cla)[0].setAttribute('cy', midH);
     $('ellipse' + '.' + cla)[0].setAttribute('cx', midW);
     $('ellipse' + '.' + cla)[0].setAttribute('rx', midW);
@@ -159,18 +152,28 @@ polyresize = (tag, cla, w, h) => {
     const name = $('polygon' + '.' + cla)[0].attributes.name.value;
     const points = $('polygon' + '.' + cla)[0].attributes.points.value;
     if (name == 'pentagon') {
-
-      const midW = w / 2.0;
       const qW = w * 0.3195;
-      const midH = h * 0.361;
-
-      $('polygon' + '.' + cla)[0].attributes.points.value = String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH);
+      $('polygon' + '.' + cla)[0].attributes.points.value = pentagon(h, w, midW, midH);
     }
     else if (name == 'hexagon') {
-      const midW = w / 2.0;
       const hp = h * 0.266;
-
-      $('polygon' + '.' + cla)[0].attributes.points.value = String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp);
+      $('polygon' + '.' + cla)[0].attributes.points.value = hexagon(h, w, midW, midH);
+    }
+    else if (name == 'triangle') {
+      $('polygon' + '.' + cla)[0].attributes.points.value = triangle(h, w, midW);
     }
   }
 }
+
+pentagon = (h, w, midW, midH) => {
+  const qW = w * 0.3195;
+  const pH = h * 0.361
+  return String(midW) + ' 0,' + String(w) + ' ' + String(pH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(pH);
+}
+
+hexagon = (h, w, midW, midH) => {
+  const hp = h * 0.266;
+  return String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp);
+}
+
+triangle = (h, w, midW) => String(midW) + ' 0,' + String(w) + ' ' + String(h) + ', ' + '0 ' + String(h);
