@@ -65,16 +65,29 @@ id = (text) => {
       if (rightselectedShape == 'ellipse') {
         const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
 
+        const midH = this.offsetHeight / 2.0;
+        const midW = this.offsetWidth / 2.0;
+
         ellipse.setAttribute('stroke', 'white');
         ellipse.setAttribute('stroke-width', 1);
-        ellipse.setAttribute('cy', this.offsetHeight / 2.0);
-        ellipse.setAttribute('cx', this.offsetWidth / 2.0);
-        ellipse.setAttribute('rx', this.offsetWidth / 2.0);
-        ellipse.setAttribute('ry', this.offsetHeight / 2.0);
+        ellipse.setAttribute('cy', midH);
+        ellipse.setAttribute('cx', midW);
+        ellipse.setAttribute('rx', midW);
+        ellipse.setAttribute('ry', midH);
         ellipse.setAttribute('fill', leftselectedColor);
         ellipse.setAttribute('class', this.id);
 
         $('#cement').append(ellipse);
+      }
+      if (rightselectedShape == 'pentagon') {
+        const h = this.offsetHeight;
+        const w = this.offsetWidth;
+
+        const midW = w / 2.0;
+        const qW = w * 0.3195;
+        const midH = h * 0.361;
+
+        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
     }
   })
@@ -85,7 +98,6 @@ id = (text) => {
       leftselectedButton.setAttribute('r', 15);
       leftselectedButton.setAttribute('stroke', 'none');
     }
-
     $(this)[0].setAttribute('r', 19);
     leftselectedButton = this;
     leftselectedColor = this.attributes.fill.value;
@@ -98,7 +110,6 @@ id = (text) => {
     else {
       rightselectedButton.setAttribute('stroke', 'none');
     }
-
     rightselectedButton = this;
     rightselectedShape = this.attributes.class.value;
     $(this)[0].setAttribute('stroke', 'white');
@@ -124,7 +135,33 @@ $(window).resize(() => {
     $('#cement' + '.' + box.attributes.class.value)[0].setAttribute('width', letter.offsetWidth);
     $('#cement' + '.' + box.attributes.class.value)[0].setAttribute('height', letter.offsetHeight);
 
-    $('rect' + '.' + box.attributes.class.value)[0].setAttribute('width', letter.offsetWidth);
-    $('rect' + '.' + box.attributes.class.value)[0].setAttribute('height', letter.offsetHeight);
+    polyresize($('#cement' + '.' + box.attributes.class.value)[0].firstChild.tagName, box.attributes.class.value, letter.offsetWidth, letter.offsetHeight);
   }
 })
+
+polyresize = (tag, cla, w, h) => {
+  if (tag == 'rect') {
+    $('rect' + '.' + cla)[0].setAttribute('width', w);
+    $('rect' + '.' + cla)[0].setAttribute('height', h);
+  }
+  else if (tag == 'ellipse') {
+    const midW = w / 2.0;
+    const midH = h / 2.0;
+    $('ellipse' + '.' + cla)[0].setAttribute('cy', midH);
+    $('ellipse' + '.' + cla)[0].setAttribute('cx', midW);
+    $('ellipse' + '.' + cla)[0].setAttribute('rx', midW);
+    $('ellipse' + '.' + cla)[0].setAttribute('ry', midH);
+  }
+  else if (tag == 'polygon') {
+    const name = $('polygon' + '.' + cla)[0].attributes.name.value;
+    const points = $('polygon' + '.' + cla)[0].attributes.points.value;
+    if (name == 'pentagon') {
+
+      const midW = w / 2.0;
+      const qW = w * 0.3195;
+      const midH = h * 0.361;
+
+      $('polygon' + '.' + cla)[0].attributes.points.value = String(midW) + ' 0,' + String(w) + ' ' + String(midH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(midH);
+    }
+  }
+}
