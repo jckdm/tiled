@@ -30,6 +30,13 @@ text, p {
   border-right: 1.5px solid white;
 }
 
+#edit {
+  top: 0;
+  left: 6px;
+  position: absolute;
+  font-size: 50px;
+}
+
 #right-menu {
   right: 0;
   border-left: 1.5px solid white;

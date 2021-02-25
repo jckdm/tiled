@@ -21,6 +21,7 @@ go = () => {
 }
 
 id = (text) => {
+  $('p').remove();
   for (let i = 0; i < text.length; i++) {
     $('body').append('<p id="_p' + i + '"></p>');
     const sentence = text[i].split(' ');
