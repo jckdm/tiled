@@ -7,7 +7,7 @@ resize = () => {
 
 let j = 0;
 let leftselected = false;
-let leftselectedColor = 'white';
+let leftselectedColor = '#fffaf0';
 let leftselectedButton = null;
 
 let rightselected = false;
@@ -34,8 +34,9 @@ id = (text) => {
       $('#_p' + i).append(' ')
     }
   }
-  $('text').mouseenter(function() { $(this).css('color', leftselectedColor) });
-  $('text').mouseout(function() { $(this).css('color', 'white') });
+  // doesn't work with hiding text, ugh
+  // $('text').mouseenter(function() { $(this).css('color', leftselectedColor) });
+  // $('text').mouseout(function() { $(this).css('color', '#fffaf0') });
 
   $('text').click(function() {
     if (leftselected && rightselected) {
@@ -49,17 +50,20 @@ id = (text) => {
       $('#cement').attr('width', this.offsetWidth);
       $('#cement').attr('height', this.offsetHeight);
 
-      $('#box').attr('onClick', 'this.remove();')
+      $('#box').attr('onClick', 'if ($("#hidetext")[0].checked) { $("#" + this.className)[0].style.color = "#fffaf0"; } this.remove();')
+
 
       const h = this.offsetHeight;
       const w = this.offsetWidth;
       const midH = this.offsetHeight / 2.0;
       const midW = this.offsetWidth / 2.0;
 
+      if ($('#hidetext')[0].checked) { this.style.color = '#1f1f1f'; }
+
       if (rightselectedShape == 'rect') {
         const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
-        rect.setAttribute('stroke', 'white');
+        rect.setAttribute('stroke', '#fffaf0');
         rect.setAttribute('stroke-width', 1);
         rect.setAttribute('height', h);
         rect.setAttribute('width', w);
@@ -71,7 +75,7 @@ id = (text) => {
       else if (rightselectedShape == 'ellipse') {
         const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
 
-        ellipse.setAttribute('stroke', 'white');
+        ellipse.setAttribute('stroke', '#fffaf0');
         ellipse.setAttribute('stroke-width', 1);
         ellipse.setAttribute('cy', midH);
         ellipse.setAttribute('cx', midW);
@@ -83,13 +87,13 @@ id = (text) => {
         $('#cement').append(ellipse);
       }
       else if (rightselectedShape == 'pentagon') {
-        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + pentagon(h, w, midW, midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + pentagon(h, w, midW, midH) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
       else if (rightselectedShape == 'hexagon') {
-        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + hexagon(h, w, midW, midH) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + hexagon(h, w, midW, midH) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
       else if (rightselectedShape == 'triangle') {
-        $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="white" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
       }
     }
   })
@@ -99,7 +103,7 @@ id = (text) => {
     else { leftselectedButton.setAttribute('stroke', 'none'); }
     leftselectedButton = this;
     leftselectedColor = this.attributes.fill.value;
-    $(this)[0].setAttribute('stroke', 'white');
+    $(this)[0].setAttribute('stroke', '#fffaf0');
     $(this)[0].setAttribute('stroke-width', '1.5px');
   })
 
@@ -108,7 +112,7 @@ id = (text) => {
     else { rightselectedButton.setAttribute('stroke', 'none'); }
     rightselectedButton = this;
     rightselectedShape = this.attributes.class.value;
-    $(this)[0].setAttribute('stroke', 'white');
+    $(this)[0].setAttribute('stroke', '#fffaf0');
     $(this)[0].setAttribute('stroke-width', '1.5px');
   })
 
