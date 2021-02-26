@@ -94,7 +94,7 @@ text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #sett
 #box { position: absolute; }
 
 @media only screen and (max-width: 414px) {
-  text, p, .overlay-content p { font-size: 20px; }
+  text, p, .overlay-content p { font-size: 22px; }
   #edit { left: 1px; }
   #settings { right: 7.5px; }
 }
