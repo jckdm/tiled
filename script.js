@@ -20,7 +20,7 @@ const tritanopia = ['#DD4444', '#F48080', '#FFDCDC', '#2D676F', '#194B4F'];
 
 setup = () => {
   color('classic');
-  $('#inp')[0].attributes.cols.value = $(window).width() / 15;
+  $('#inp')[0].attributes.cols.value = $(window).width() / 12.5;
   $('#inp')[0].attributes.rows.value = $(window).height() / 25;
 }
 
@@ -138,7 +138,7 @@ id = (text) => {
 
 $(window).resize(() => {
 
-  $('#inp')[0].attributes.cols.value = $(window).width() / 15;
+  $('#inp')[0].attributes.cols.value = $(window).width() / 12.5;
   $('#inp')[0].attributes.rows.value = $(window).height() / 25;
 
   const boxes = $('div#box');

@@ -95,8 +95,8 @@ text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #sett
 
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 20px; }
-  #edit { left: 0; }
-  #settings { right: 8.5px; }
+  #edit { left: 1px; }
+  #settings { right: 7.5px; }
 }
 
 @media only screen and (min-width: 414px) and (max-width: 640px) {
