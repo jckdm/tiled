@@ -91,7 +91,7 @@ text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #sett
 #enter, label { color: #262626; }
 #enter:hover { cursor: default; }
 
-#box { position: absolute; }
+.box { position: absolute; }
 
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 22px; }

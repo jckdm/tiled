@@ -1,5 +1,3 @@
-// weird bug: if you hid letters and then uncheck the box, they're still gone lol
-
 $(() => setup() );
 
 let leftselected = false;
@@ -47,6 +45,8 @@ color = (sc) => {
 
 id = (text) => {
   $('p').remove();
+  $('.box').remove();
+
   let j = 0;
 
   for (let i = 0; i < text.length; i++) {
@@ -64,17 +64,12 @@ id = (text) => {
 
   $('text').click(function() {
     if (leftselected && rightselected) {
-      $('body').prepend('<div id="box"><svg id="cement"></svg></div>');
 
-      $('#box').css('top', this.offsetTop);
-      $('#box').css('left', this.offsetLeft);
-      $('#box').attr('class', this.id);
+      $('body').prepend('<div style="top:' + this.offsetTop + 'px; left:' + this.offsetLeft + 'px;" id="' + this.id + '" class="box" onclick="letvis(this.id)"><svg id="cement"></svg></div>');
 
       $('#cement').attr('class', this.id);
       $('#cement').attr('width', this.offsetWidth);
       $('#cement').attr('height', this.offsetHeight);
-
-      $('#box').attr('onClick', 'if ($("#hidetext")[0].checked) { $("#" + this.className)[0].style.color = "#262626"; } this.remove();')
 
       const h = this.offsetHeight;
       const w = this.offsetWidth;
@@ -136,24 +131,32 @@ id = (text) => {
   })
 }
 
+letvis = (i) => {
+  if ($('#hidetext')[0].checked || (!$('#hidetext')[0].checked && $('text#' + i)[0].style.color == 'rgb(255, 250, 240)')) {
+    $('text#' + i)[0].style.color = '#262626';
+  }
+  $('div#' + i)[0].remove();
+  ;
+}
+
 $(window).resize(() => {
 
   $('#inp')[0].attributes.cols.value = $(window).width() / 12.5;
   $('#inp')[0].attributes.rows.value = $(window).height() / 25;
 
-  const boxes = $('div#box');
+  const boxes = $('div.box');
   for (box of boxes) {
-    const letter = $('#' + box.attributes.class.value)[0];
+    const letter = $('text#' + box.attributes.id.value)[0];
 
     $(box).css('top', letter.offsetTop);
     $(box).css('left', letter.offsetLeft);
     $(box).css('height', letter.offsetHeight);
     $(box).css('width', letter.offsetWidth);
 
-    $('#cement' + '.' + box.attributes.class.value)[0].setAttribute('width', letter.offsetWidth);
-    $('#cement' + '.' + box.attributes.class.value)[0].setAttribute('height', letter.offsetHeight);
+    $('#cement' + '.' + box.attributes.id.value)[0].setAttribute('width', letter.offsetWidth);
+    $('#cement' + '.' + box.attributes.id.value)[0].setAttribute('height', letter.offsetHeight);
 
-    polyresize($('#cement' + '.' + box.attributes.class.value)[0].firstChild.tagName, box.attributes.class.value, letter.offsetWidth, letter.offsetHeight);
+    polyresize($('#cement' + '.' + box.attributes.id.value)[0].firstChild.tagName, box.attributes.id.value, letter.offsetWidth, letter.offsetHeight);
   }
 })
 
