@@ -22,30 +22,47 @@
   </div>
   <div class="overlay-settings">
     <div class="overlay-content">
-      <input name="hidetext" id="hidetext" type="checkbox"/>
+      <input id="hidetext" type="checkbox"/>
       <label for="hidetext">Hide letter when adding shape</label>
+      <br><br>
+      <strong>Color Scheme</strong>
+      <br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="classic" checked>
+        <label for="classic">Classic</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="vintage">
+        <label for="vintage">Vintage</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="grayscale">
+        <label for="grayscale">Grayscale</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="pastel">
+        <label for="Pastel">Pastel</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="protanopia">
+        <label for="protanopia">Protanopia</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="deuteranopia">
+      <label for="deuteranopia">Deuteranopia</label><br>
+    <input onchange="color(this.id);" name="scheme" type="radio" id="tritanopia">
+        <label for="tritanopia">Tritanopia</label>
       <br><br>
       <input id="sub" type="button" onclick="$('.overlay-settings').css('visibility', 'hidden');" value="Save settings">
     </div>
   </div>
   <div id="left-menu">
     <b id="edit" onclick="$('.overlay').css('visibility', 'visible');">&#9998;&#xFE0E;</b>
-      <svg height="300px">
-        <circle cx="25" cy="50" r="15" fill="red"/>
-        <circle cx="25" cy="100" r="15" fill="green"/>
-        <circle cx="25" cy="150" r="15" fill="blue"/>
-        <circle cx="25" cy="200" r="15" fill="yellow"/>
-        <circle cx="25" cy="250" r="15" fill="purple"/>
+      <svg id="scheme" height="300px">
+        <circle cx="25" cy="50" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle cx="25" cy="100" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle cx="25" cy="200" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle cx="25" cy="250" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
       </svg>
   </div>
   <div id="right-menu">
     <b id="settings" onclick="$('.overlay-settings').css('visibility', 'visible');">&#9881;&#xFE0E;</b>
       <svg height="300px">
-        <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" fill="gray"/>
-        <rect class="rect" x="10" y="85" height="30" width="30" fill="gray"/>
-        <circle class="ellipse" cx="25" cy="150" r="15" fill="gray"/>
-        <polygon class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" fill="gray"/>
-        <polygon class="triangle" points="10 265, 25 235, 40 265" fill="gray"/>
+        <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <rect class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <circle class="ellipse" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon class="triangle" points="10 265, 25 235, 40 265" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
       </svg>
   </div>
 </body>

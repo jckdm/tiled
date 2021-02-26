@@ -1,27 +1,54 @@
-$(() => resize() );
+// weird bug: if you hid letters and then uncheck the box, they're still gone lol
 
-resize = () => {
-  $('#inp')[0].attributes.cols.value = $(window).width() / 15;
-  $('#inp')[0].attributes.rows.value = $(window).height() / 25;
-}
+$(() => setup() );
 
-let j = 0;
 let leftselected = false;
-let leftselectedColor = '#fffaf0';
+let leftselectedColor = null;
 let leftselectedButton = null;
 
 let rightselected = false;
 let rightselectedShape = null;
 let rightselectedButton = null;
 
+const classic = ['#FF0000', '#FFFF00', '#008000', '#0000FF', '#EE82EE'];
+const vintage = ['#91A16A', '#B36154', '#738986', '#DDC173', '#8E8680'];
+const grayscale = ['#999999', '#777777', '#555555', '#333333', '#111111'];
+const pastel = ['#FDDFDF', '#FCF7DE', '#DEFDE0', '#DEF3FD', '#F0DEFD'];
+const protanopia = ['#BDB6AB', '#EDE6DE', '#D1D0DE', '#636D97', '#2E2B21'];
+const deuteranopia = ['#CDB1AD', '#FADFE2', '#DECBE3', '#5D6E93', '#342A1F'];
+const tritanopia = ['#DD4444', '#F48080', '#FFDCDC', '#2D676F', '#194B4F'];
+
+setup = () => {
+  color('classic');
+  $('#inp')[0].attributes.cols.value = $(window).width() / 15;
+  $('#inp')[0].attributes.rows.value = $(window).height() / 25;
+}
+
 go = () => {
   const text = $('#inp')[0].value.split('\n');
-  $('.overlay').css('visibility', 'hidden');
-  id(text);
+  if (text != '') {
+    $('.overlay').css('visibility', 'hidden');
+    id(text);
+  }
+}
+
+color = (sc) => {
+  const swatches = $('#scheme')[0].children;
+  for (let i = 0; i < 5; i++) {
+    swatches[i].attributes.fill.value = eval(sc)[i];
+  }
+  if (leftselected) {
+    leftselected = false;
+    leftselectedColor = null;
+    leftselectedButton.setAttribute('stroke-width', '0.5');
+    leftselectedButton = null;
+  }
 }
 
 id = (text) => {
   $('p').remove();
+  let j = 0;
+
   for (let i = 0; i < text.length; i++) {
     $('body').append('<p id="_p' + i + '"></p>');
     const sentence = text[i].split(' ');
@@ -34,9 +61,6 @@ id = (text) => {
       $('#_p' + i).append(' ')
     }
   }
-  // doesn't work with hiding text, ugh
-  // $('text').mouseenter(function() { $(this).css('color', leftselectedColor) });
-  // $('text').mouseout(function() { $(this).css('color', '#fffaf0') });
 
   $('text').click(function() {
     if (leftselected && rightselected) {
@@ -50,21 +74,20 @@ id = (text) => {
       $('#cement').attr('width', this.offsetWidth);
       $('#cement').attr('height', this.offsetHeight);
 
-      $('#box').attr('onClick', 'if ($("#hidetext")[0].checked) { $("#" + this.className)[0].style.color = "#fffaf0"; } this.remove();')
-
+      $('#box').attr('onClick', 'if ($("#hidetext")[0].checked) { $("#" + this.className)[0].style.color = "#262626"; } this.remove();')
 
       const h = this.offsetHeight;
       const w = this.offsetWidth;
       const midH = this.offsetHeight / 2.0;
       const midW = this.offsetWidth / 2.0;
 
-      if ($('#hidetext')[0].checked) { this.style.color = '#1f1f1f'; }
+      if ($('#hidetext')[0].checked) { this.style.color = '#fffaf0'; }
 
       if (rightselectedShape == 'rect') {
         const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
-        rect.setAttribute('stroke', '#fffaf0');
-        rect.setAttribute('stroke-width', 1);
+        rect.setAttribute('stroke', '#262626');
+        rect.setAttribute('stroke-width', 0.5);
         rect.setAttribute('height', h);
         rect.setAttribute('width', w);
         rect.setAttribute('fill', leftselectedColor);
@@ -75,8 +98,8 @@ id = (text) => {
       else if (rightselectedShape == 'ellipse') {
         const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
 
-        ellipse.setAttribute('stroke', '#fffaf0');
-        ellipse.setAttribute('stroke-width', 1);
+        ellipse.setAttribute('stroke', '#262626');
+        ellipse.setAttribute('stroke-width', 0.5);
         ellipse.setAttribute('cy', midH);
         ellipse.setAttribute('cx', midW);
         ellipse.setAttribute('rx', midW);
@@ -87,35 +110,30 @@ id = (text) => {
         $('#cement').append(ellipse);
       }
       else if (rightselectedShape == 'pentagon') {
-        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + pentagon(h, w, midW, midH) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="pentagon" class="' + this.id + '" points="' + pentagon(h, w, midW, midH) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
       }
       else if (rightselectedShape == 'hexagon') {
-        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + hexagon(h, w, midW, midH) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="hexagon" class="' + this.id + '" points="' + hexagon(h, w, midW, midH) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
       }
       else if (rightselectedShape == 'triangle') {
-        $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="#fffaf0" stroke-width="1" fill="' + leftselectedColor +'"/>');
+        $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
       }
     }
   })
-
   $('#left-menu circle').click(function() {
     if (!leftselected) { leftselected = true; }
-    else { leftselectedButton.setAttribute('stroke', 'none'); }
+    else { leftselectedButton.setAttribute('stroke-width', '0.5'); }
     leftselectedButton = this;
     leftselectedColor = this.attributes.fill.value;
-    $(this)[0].setAttribute('stroke', '#fffaf0');
-    $(this)[0].setAttribute('stroke-width', '1.5px');
+    $(this)[0].setAttribute('stroke-width', '2.0');
   })
-
   $('#right-menu polygon, #right-menu circle, #right-menu rect').click(function() {
     if (!rightselected) { rightselected = true; }
-    else { rightselectedButton.setAttribute('stroke', 'none'); }
+    else { rightselectedButton.setAttribute('stroke-width', '0.5'); }
     rightselectedButton = this;
     rightselectedShape = this.attributes.class.value;
-    $(this)[0].setAttribute('stroke', '#fffaf0');
-    $(this)[0].setAttribute('stroke-width', '1.5px');
+    $(this)[0].setAttribute('stroke-width', '2.0');
   })
-
 }
 
 $(window).resize(() => {

@@ -1,6 +1,6 @@
 body {
-  background-color: #1f1f1f;
   position: absolute;
+  background-color: #fffaf0;
   top: 0;
   left: 51.5px;
   right: 51.5px;
@@ -10,14 +10,14 @@ body {
 }
 
 text, p {
-  color: #fffaf0;
+  color: #262626;
   line-height: 1.25;
 }
 
 #left-menu, #right-menu {
   height: 100%;
   width: 50px;
-  background-color: #131313;
+  background-color: #faebd7;
   position: fixed;
   top: 0px;
   margin: auto;
@@ -27,27 +27,32 @@ text, p {
 
 #left-menu {
   left: 0;
-  border-right: 1.5px solid #fffaf0;
+  border-right: 1.5px solid #262626;
+}
+
+#right-menu {
+  right: 0;
+  border-left: 1.5px solid #262626;
 }
 
 #edit, #settings {
   top: 0;
   position: absolute;
   font-size: 50px;
-  color: white;
+  color: #262626;
 }
 
 #edit { left: 6px; }
-#settings { top: 3px; right: 7.5px; }
+
+#settings {
+  top: 3px;
+  right: 6.5px;
+  font-size: 55px;
+}
 
 #inp, #sub { background-color: #fffaf0; }
 
-#edit:hover, #settings:hover { color: #fffaf0; }
-
-#right-menu {
-  right: 0;
-  border-left: 1.5px solid #fffaf0;
-}
+#edit:hover, #settings:hover { color: gray; }
 
 .overlay { visibility: visible; }
 
@@ -65,13 +70,13 @@ text, p {
 
 .overlay-content {
   padding: 10px 20px 20px 20px;
-  background-color: #eae0c8;
+  background-color: #faebd7;
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1.5px solid #fffaf0;
+  border: 1.5px solid #262626;
   width: 65%;
 }
 
@@ -91,6 +96,7 @@ text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #sett
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 20px; }
   #edit { left: 0; }
+  #settings { right: 8.5px; }
 }
 
 @media only screen and (min-width: 414px) and (max-width: 640px) {
