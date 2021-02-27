@@ -50,13 +50,13 @@ text, p {
   font-size: 55px;
 }
 
-#inp, #sub { background-color: #fffaf0; }
+#inp, #sub, #ready { background-color: #fffaf0; }
 
 #edit:hover, #settings:hover { color: gray; }
 
 .overlay { visibility: visible; }
 
-.overlay, .overlay-settings {
+.overlay, .overlay-settings, .overlay-next {
   background-color: #333333D9;
   width: 100%;
   height: 100%;
@@ -66,9 +66,11 @@ text, p {
   top: 0;
 }
 
-.overlay-settings { visibility: hidden; }
+.overlay-settings, .overlay-next { visibility: hidden; }
 
-.overlay-content {
+.overlay-next { background-color: #FFFFFF00; }
+
+.overlay-content, .overlay-content-next {
   padding: 10px 20px 20px 20px;
   background-color: #faebd7;
   margin: 0;
@@ -78,6 +80,11 @@ text, p {
   transform: translate(-50%, -50%);
   border: 1.5px solid #262626;
   width: 65%;
+}
+
+.overlay-content-next {
+  width: 55%;
+  text-align: center;
 }
 
 .overlay-content p {
@@ -90,6 +97,14 @@ text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #sett
 
 #enter, label { color: #262626; }
 #enter:hover { cursor: default; }
+
+#ready, #sub {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 .box { position: absolute; }
 

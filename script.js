@@ -16,6 +16,9 @@ const protanopia = ['#BDB6AB', '#EDE6DE', '#D1D0DE', '#636D97', '#2E2B21'];
 const deuteranopia = ['#CDB1AD', '#FADFE2', '#DECBE3', '#5D6E93', '#342A1F'];
 const tritanopia = ['#DD4444', '#F48080', '#FFDCDC', '#2D676F', '#194B4F'];
 
+let text;
+let starting = true;
+
 setup = () => {
   color('classic');
   $('#inp')[0].attributes.cols.value = $(window).width() / 12.5;
@@ -23,11 +26,24 @@ setup = () => {
 }
 
 go = () => {
-  const text = $('#inp')[0].value.split('\n');
+  text = $('#inp')[0].value.split('\n');
   if (text != '') {
     $('.overlay').css('visibility', 'hidden');
-    id(text);
+    if (starting) { $('.overlay-next').css('visibility', 'visible'); }
+    else { id(text); }
   }
+}
+
+gogogo = () => {
+  $('.overlay-next').css('visibility', 'hidden');
+  id(text);
+}
+
+edit = (x) => {
+  if (x) { starting = false; id(text); }
+  $('.overlay').css('visibility', 'visible');
+  $('#sub')[0].value = 'Update Text';
+  $('#enter')[0].remove();
 }
 
 color = (sc) => {
