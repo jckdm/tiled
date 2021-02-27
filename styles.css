@@ -52,6 +52,8 @@ text, p {
 
 #inp, .butt { background-color: #fffaf0; }
 
+#cancel { visibility: hidden; }
+
 .butt {
   text-align: center;
   margin: 0;

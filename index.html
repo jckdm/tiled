@@ -14,9 +14,12 @@
     <div class="overlay-content">
       <div id="enter">
         <text id="enthead">Enter text below.</text>
-        <form>
+        <form id="editor">
           <textarea id="inp" rows="30" cols="30"></textarea><br><br>
           <input id="sub" class="butt" type="button" onclick="go()" value="Continue"><br>
+          <div id="cancel">
+            <input class="butt" type="button" onclick="cancel()" value="Cancel">
+          </div>
         </form>
       </div>
     </div>

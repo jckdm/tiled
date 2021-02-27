@@ -28,6 +28,7 @@ setup = () => {
 go = () => {
   text = $('#inp')[0].value.split('\n');
   if (text != '') {
+    $('#cancel')[0].style.visibility = 'hidden';
     $('.overlay').css('visibility', 'hidden');
     if (starting) { $('.overlay-next').css('visibility', 'visible'); }
     else { id(text); }
@@ -39,10 +40,21 @@ gogogo = () => {
   id(text);
 }
 
+cancel = () => {
+  $('.overlay').css('visibility', 'hidden');
+  $('#cancel')[0].style.visibility = 'hidden';
+}
+
 edit = (x) => {
   $('.overlay').css('visibility', 'visible');
   $('#enthead')[0].innerText = 'Edit text below.';
   $('#sub')[0].value = 'Update Text';
+  if (starting) {
+    $('#cancel')[0].innerHTML += ('<br>');
+    $('#cancel')[0].insertAdjacentHTML('beforebegin', '<br>');
+    $('#cancel')[0].style.visibility = 'visible';
+  }
+  else { $('#cancel')[0].style.visibility = 'visible'; }
   if (x) { starting = false; }
 }
 
