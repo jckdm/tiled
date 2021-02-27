@@ -42,8 +42,8 @@ gogogo = () => {
 edit = (x) => {
   if (x) { starting = false; id(text); }
   $('.overlay').css('visibility', 'visible');
+  $('#enthead')[0].innerText = 'Edit text below.';
   $('#sub')[0].value = 'Update Text';
-  $('#enter')[0].remove();
 }
 
 color = (sc) => {
