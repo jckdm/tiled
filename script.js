@@ -26,10 +26,15 @@ setup = () => {
 }
 
 go = () => {
+  if (!starting) {
+    if (text.join('\n') == $('#inp')[0].value) {
+      cancel();
+      return;
+    }
+  }
   text = $('#inp')[0].value.split('\n');
   if (text != '') {
-    $('#cancel')[0].style.visibility = 'hidden';
-    $('.overlay').css('visibility', 'hidden');
+    cancel();
     if (starting) { $('.overlay-next').css('visibility', 'visible'); }
     else { id(text); }
   }
