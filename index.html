@@ -12,10 +12,10 @@
 <body>
   <div class="overlay">
     <div class="overlay-content">
-      <text id="enter">Enter text below.</text>
+      <div id="enter"><text>Enter text below.</text></div>
       <form>
         <textarea id="inp" rows="30" cols="30"></textarea><br><br>
-        <input id="sub" type="button" onclick="go()" value="Continue"><br>
+        <input class="butt" type="button" onclick="go()" value="Continue"><br>
       </form>
     </div>
   </div>
@@ -25,7 +25,7 @@
       <text>Pick a shape. &#8680;&#xFE0E;</text><br>
       <text>Click your text!</text>
       <form>
-        <br><input id="ready" type="button" onclick="gogogo()" value="I'm Ready!"><br>
+        <br><input class="butt" type="button" onclick="gogogo()" value="I'm Ready!"><br>
       </form>
     </div>
   </div>
@@ -51,7 +51,8 @@
       <input onchange="color(this.id);" name="scheme" type="radio" id="tritanopia">
         <label for="tritanopia">Tritanopia</label>
       <br><br>
-      <input id="sub" type="button" onclick="$('.overlay-settings').css('visibility', 'hidden');" value="Save settings">
+      <input class="butt" type="button" onclick="$('.overlay-settings').css('visibility', 'hidden');" value="Save Settings">
+      <br>
     </div>
   </div>
   <div id="left-menu">

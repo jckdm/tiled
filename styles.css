@@ -50,7 +50,22 @@ text, p {
   font-size: 55px;
 }
 
-#inp, #sub, #ready { background-color: #fffaf0; }
+#inp, .butt { background-color: #fffaf0; }
+
+.butt {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#enter { text-align: center; }
+#enter text:hover { cursor: default; }
+
+label { color: #262626; }
+
+.box { position: absolute; }
 
 #edit:hover, #settings:hover { color: gray; }
 
@@ -94,19 +109,6 @@ text, p {
 }
 
 text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover { cursor: pointer; }
-
-#enter, label { color: #262626; }
-#enter:hover { cursor: default; }
-
-#ready, #sub {
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.box { position: absolute; }
 
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 22px; }
