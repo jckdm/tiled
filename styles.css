@@ -42,11 +42,11 @@ text, p, a, a:visited {
   color: #262626;
 }
 
-#edit { left: 6px; }
+#edit { left: 6.5px; }
 
 #settings {
   top: 3px;
-  right: 6.5px;
+  right: 7px;
   font-size: 55px;
 }
 
@@ -112,7 +112,7 @@ label { color: #262626; }
   display: inline;
 }
 
-text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover, input:hover { cursor: pointer; }
+text:hover, p:hover, circle:hover, ellipse:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover, input:hover { cursor: pointer; }
 
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 22px; }

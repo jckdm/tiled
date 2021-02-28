@@ -25,7 +25,7 @@
   <div class="overlay2">
     <div class="overlay-content">
       <div id="enter">
-        <text class="subhead" id="enthead">The text inserted below can later be edited by clicking the pencil icon.</text>
+        <text class="subhead" id="enthead">The text inserted below can later be edited by clicking the &#9998;&#xFE0E; icon.</text>
         <form id="editor">
           <textarea id="inp" rows="30" cols="30"></textarea><br><br>
           <input id="sub" class="butt" type="button" onclick="go()" value="Continue"><br>
@@ -42,7 +42,7 @@
         <br>
         <text>&#8678;&#xFE0E; &nbsp; Pick a color.</text><br>
         <text>Pick a shape. &nbsp; &#8680;&#xFE0E;</text><br><br>
-        <text class="subhead">Click your text!</text>
+        <text class="subhead">Click a letter!</text>
         <form>
           <br><input class="butt" type="button" onclick="gogogo()" value="I'm Ready"><br>
         </form>
@@ -71,7 +71,7 @@
     </div>
   </div>
   <div id="left-menu">
-    <b id="edit" onclick="edit(true)">&#9998;&#xFE0E;</b>
+    <span id="edit" onclick="edit(true)">&#9998;&#xFE0E;</span>
       <svg id="scheme" height="300px">
         <circle cx="25" cy="50" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
         <circle cx="25" cy="100" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
@@ -81,7 +81,7 @@
       </svg>
   </div>
   <div id="right-menu">
-    <b id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</b>
+    <span id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</span>
       <svg height="300px">
         <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
         <rect class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
