@@ -10,10 +10,22 @@
   <title>Tiled</title>
 </head>
 <body>
-  <div class="overlay">
+  <div class="overlay1">
     <div class="overlay-content">
       <div id="enter">
-        <text id="enthead">Enter text below.</text>
+        <text><i>Tiled</i> is a text abstraction tool by <a href="https://jackadam.cc" target="_blank">Jack Adam</a> for ART 469 at Yale University.</text>
+        <br><br>
+        <text class="subhead">On the next page, enter text to be abstracted. It can be edited by clicking the pencil icon.</text>
+        <br><br>
+        <input class="butt" type="button" onclick="$('.overlay1').css('visibility', 'hidden'); $('.overlay2').css('visibility', 'visible');" value="Continue">
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="overlay2">
+    <div class="overlay-content">
+      <div id="enter">
+        <text class="subhead" id="enthead">Enter text below.</text>
         <form id="editor">
           <textarea id="inp" rows="30" cols="30"></textarea><br><br>
           <input id="sub" class="butt" type="button" onclick="go()" value="Continue"><br>
@@ -24,39 +36,37 @@
       </div>
     </div>
   </div>
-  <div class="overlay-next">
-    <div class="overlay-content-next">
-      <br><text>&#8678;&#xFE0E; Pick a color.</text><br>
-      <text>Pick a shape. &#8680;&#xFE0E;</text><br>
-      <text>Click your text!</text>
-      <form>
-        <br><input class="butt" type="button" onclick="gogogo()" value="I'm Ready!"><br>
-      </form>
+  <div class="overlay3">
+    <div class="overlay-content-3">
+      <div id="enter">
+        <br>
+        <text>&#8678;&#xFE0E; &nbsp; Pick a color.</text><br>
+        <text>Pick a shape. &nbsp; &#8680;&#xFE0E;</text><br><br>
+        <text class="subhead">Click your text!</text>
+        <form>
+          <br><input class="butt" type="button" onclick="gogogo()" value="I'm Ready"><br>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="overlay-settings">
-    <div class="overlay-content">
-      <input id="hidetext" type="checkbox"/>
-      <label for="hidetext">Hide letter when adding shape</label>
+  <div class="overlay4">
+    <div class="overlay-content-4">
+      <br>
+      <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding shape</label>
       <br><br>
       <strong>Color Scheme</strong>
       <br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="classic" checked>
-        <label for="classic">Classic</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="vintage">
-        <label for="vintage">Vintage</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="grayscale">
-        <label for="grayscale">Grayscale</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="pastel">
-        <label for="Pastel">Pastel</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="protanopia">
-        <label for="protanopia">Protanopia</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="deuteranopia">
-      <label for="deuteranopia">Deuteranopia</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="tritanopia">
-        <label for="tritanopia">Tritanopia</label>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="classic" checked><label for="classic">Classic</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="vintage"><label for="vintage">Vintage</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="grayscale"><label for="grayscale">Grayscale</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="pastel"><label for="Pastel">Pastel</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="protanopia"><label for="protanopia">Protanopia</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="deuteranopia"><label for="deuteranopia">Deuteranopia</label><br>
+      <input onchange="color(this.id);" name="scheme" type="radio" id="tritanopia"><label for="tritanopia">Tritanopia</label>
       <br><br>
-      <input class="butt" type="button" onclick="$('.overlay-settings').css('visibility', 'hidden');" value="Save Settings">
+      <a href="https://github.com/jckdm/tiled" target="_blank">Check out the code!</a>
+      <br><br>
+      <input class="butt" type="button" onclick="$('.overlay4').css('visibility', 'hidden');" value="Save Settings">
       <br>
     </div>
   </div>
@@ -71,7 +81,7 @@
       </svg>
   </div>
   <div id="right-menu">
-    <b id="settings" onclick="$('.overlay-settings').css('visibility', 'visible');">&#9881;&#xFE0E;</b>
+    <b id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</b>
       <svg height="300px">
         <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
         <rect class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>

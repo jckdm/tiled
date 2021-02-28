@@ -9,7 +9,7 @@ body {
   font-family: Helvetica;
 }
 
-text, p {
+text, p, a, a:visited {
   color: #262626;
   line-height: 1.25;
 }
@@ -63,7 +63,7 @@ text, p {
 }
 
 #enter { text-align: center; }
-#enter text:hover { cursor: default; }
+#enter text:hover, strong { cursor: default; }
 
 label { color: #262626; }
 
@@ -71,9 +71,9 @@ label { color: #262626; }
 
 #edit:hover, #settings:hover { color: gray; }
 
-.overlay { visibility: visible; }
+.overlay1 { visibility: visible; }
 
-.overlay, .overlay-settings, .overlay-next {
+.overlay1, .overlay2, .overlay3, .overlay4 {
   background-color: #333333D9;
   width: 100%;
   height: 100%;
@@ -83,11 +83,11 @@ label { color: #262626; }
   top: 0;
 }
 
-.overlay-settings, .overlay-next { visibility: hidden; }
+.overlay4, .overlay3, .overlay2 { visibility: hidden; }
 
-.overlay-next { background-color: #FFFFFF00; }
+.overlay3 { background-color: #FFFFFF00; }
 
-.overlay-content, .overlay-content-next {
+.overlay-content, .overlay-content-3, .overlay-content-4 {
   padding: 10px 20px 20px 20px;
   background-color: #faebd7;
   margin: 0;
@@ -99,10 +99,12 @@ label { color: #262626; }
   width: 65%;
 }
 
-.overlay-content-next {
+.overlay-content-3 {
   width: 55%;
   text-align: center;
 }
+
+.overlay-content-4 { width: calc(200px + 20%); }
 
 .overlay-content p {
   color: #262626;
@@ -110,30 +112,36 @@ label { color: #262626; }
   display: inline;
 }
 
-text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover { cursor: pointer; }
+text:hover, p:hover, circle:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover, input:hover { cursor: pointer; }
 
 @media only screen and (max-width: 414px) {
   text, p, .overlay-content p { font-size: 22px; }
   #edit { left: 1px; }
   #settings { right: 7.5px; }
+  .subhead { font-size: 16px; }
 }
 
 @media only screen and (min-width: 414px) and (max-width: 640px) {
   text, p, .overlay-content p { font-size: 28px; }
+  .subhead { font-size: 18px; }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 768px)  {
   text, p, .overlay-content p { font-size: 36px; }
+  .subhead { font-size: 22px; }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px)  {
   text, p, .overlay-content p { font-size: 40px; }
+  .subhead { font-size: 28px; }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1280px) {
   text, p, .overlay-content p { font-size: 50px; }
+  .subhead { font-size: 36px; }
 }
 
 @media only screen and (min-width: 1280px) {
   text, p, .overlay-content p { font-size: 64px; }
+  .subhead { font-size: 40px; }
 }

@@ -35,23 +35,23 @@ go = () => {
   text = $('#inp')[0].value.split('\n');
   if (text != '') {
     cancel();
-    if (starting) { $('.overlay-next').css('visibility', 'visible'); }
+    if (starting) { $('.overlay3').css('visibility', 'visible'); }
     else { id(text); }
   }
 }
 
 gogogo = () => {
-  $('.overlay-next').css('visibility', 'hidden');
+  $('.overlay3').css('visibility', 'hidden');
   id(text);
 }
 
 cancel = () => {
-  $('.overlay').css('visibility', 'hidden');
+  $('.overlay2').css('visibility', 'hidden');
   $('#cancel')[0].style.visibility = 'hidden';
 }
 
 edit = (x) => {
-  $('.overlay').css('visibility', 'visible');
+  $('.overlay2').css('visibility', 'visible');
   $('#enthead')[0].innerText = 'Edit text below.';
   $('#sub')[0].value = 'Update Text';
   if (starting) {
