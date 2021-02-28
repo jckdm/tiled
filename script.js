@@ -55,6 +55,7 @@ edit = (x) => {
   $('#enthead')[0].innerText = 'Edit text below.';
   $('#sub')[0].value = 'Update Text';
   if (starting) {
+    $('#editme')[0].remove();
     $('#cancel')[0].innerHTML += ('<br>');
     $('#cancel')[0].insertAdjacentHTML('beforebegin', '<br>');
     $('#cancel')[0].style.visibility = 'visible';

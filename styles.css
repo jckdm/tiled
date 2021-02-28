@@ -45,7 +45,7 @@ text, p, a, a:visited {
 #edit { left: 6.5px; }
 
 #settings {
-  top: 3px;
+  top: 2.5px;
   right: 7px;
   font-size: 55px;
 }
@@ -115,10 +115,10 @@ label { color: #262626; }
 text:hover, p:hover, circle:hover, ellipse:hover, rect:hover, polygon:hover, #edit:hover, #settings:hover, input:hover { cursor: pointer; }
 
 @media only screen and (max-width: 414px) {
-  text, p, .overlay-content p { font-size: 22px; }
-  #edit { left: 1px; }
+  text, p, .overlay-content p { font-size: 24px; }
+  .subhead { font-size: 18px; }
+  #edit { left: 1.5px; }
   #settings { right: 7.5px; }
-  .subhead { font-size: 16px; }
 }
 
 @media only screen and (min-width: 414px) and (max-width: 640px) {
