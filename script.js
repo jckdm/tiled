@@ -8,6 +8,8 @@ let rightselected = false;
 let rightselectedShape = null;
 let rightselectedButton = null;
 
+let selectedScheme;
+
 const classic = ['#FF0000', '#FFFF00', '#008000', '#0000FF', '#EE82EE'];
 const vintage = ['#91A16A', '#B36154', '#738986', '#DDC173', '#8E8680'];
 const grayscale = ['#999999', '#777777', '#555555', '#333333', '#111111'];
@@ -64,15 +66,29 @@ edit = (x) => {
   if (x) { starting = false; }
 }
 
+randomly = () => {
+  const alltext = $('p text');
+  const swatches = $('#left-menu circle');
+  const shapes = $('#shapes')[0].children;
+  $('.box').remove();
+
+  for (letter of alltext) {
+    leftcolor(swatches[Math.floor(Math.random() * 5)]);
+    rightshape(shapes[Math.floor(Math.random() * 5)]);
+    letter.click();
+  }
+}
+
 color = (sc) => {
-  const swatches = $('#scheme')[0].children;
+  selectedScheme = eval(sc);
+  const swatches = $('#scheme circle');
   for (let i = 0; i < 5; i++) {
-    swatches[i].attributes.fill.value = eval(sc)[i];
+    swatches[i].attributes.fill.value = selectedScheme[i];
   }
   if (leftselected) {
     leftselected = false;
     leftselectedColor = null;
-    leftselectedButton.setAttribute('stroke-width', '0.5');
+    leftselectedButton.setAttribute('stroke-width', 0.5);
     leftselectedButton = null;
   }
 }
@@ -149,20 +165,6 @@ id = (text) => {
       }
     }
   })
-  $('#left-menu circle').click(function() {
-    if (!leftselected) { leftselected = true; }
-    else { leftselectedButton.setAttribute('stroke-width', '0.5'); }
-    leftselectedButton = this;
-    leftselectedColor = this.attributes.fill.value;
-    $(this)[0].setAttribute('stroke-width', '2.0');
-  })
-  $('#right-menu polygon, #right-menu circle, #right-menu rect').click(function() {
-    if (!rightselected) { rightselected = true; }
-    else { rightselectedButton.setAttribute('stroke-width', '0.5'); }
-    rightselectedButton = this;
-    rightselectedShape = this.attributes.class.value;
-    $(this)[0].setAttribute('stroke-width', '2.0');
-  })
 }
 
 letvis = (i) => {
@@ -171,6 +173,22 @@ letvis = (i) => {
   }
   $('div#' + i)[0].remove();
   ;
+}
+
+leftcolor = (t) => {
+  if (!leftselected) { leftselected = true; }
+  else { leftselectedButton.setAttribute('stroke-width', 0.5); }
+  leftselectedButton = t;
+  leftselectedColor = t.attributes.fill.value;
+  $(t)[0].setAttribute('stroke-width', 2.0);
+}
+
+rightshape = (t) => {
+  if (!rightselected) { rightselected = true; }
+  else { rightselectedButton.setAttribute('stroke-width', 0.5); }
+  rightselectedButton = t;
+  rightselectedShape = t.attributes.class.value;
+  $(t)[0].setAttribute('stroke-width', 2.0);
 }
 
 $(window).resize(() => {

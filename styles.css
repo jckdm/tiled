@@ -50,7 +50,7 @@ text, p, a, a:visited {
   font-size: 55px;
 }
 
-#inp, .butt { background-color: #fffaf0; }
+#inp, .butt, .leftbutt { background-color: #fffaf0; }
 
 #cancel { visibility: hidden; }
 

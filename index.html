@@ -57,7 +57,9 @@
   <div class="overlay4">
     <div class="overlay-content-4">
       <br>
-      <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding shape</label>
+      <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding tile</label>
+      <br><br>
+      <input class="leftbutt" type="button" onclick="randomly();" value="Randomly tile all letters">
       <br><br>
       <strong>Color Scheme</strong>
       <br>
@@ -78,21 +80,21 @@
   <div id="left-menu">
     <span id="edit" onclick="edit(true)">&#9998;&#xFE0E;</span>
       <svg id="scheme" height="300px">
-        <circle cx="25" cy="50" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
-        <circle cx="25" cy="100" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
-        <circle cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
-        <circle cx="25" cy="200" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
-        <circle cx="25" cy="250" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="50" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="100" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="200" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="250" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
       </svg>
   </div>
   <div id="right-menu">
     <span id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</span>
-      <svg height="300px">
-        <polygon class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <rect class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <circle class="ellipse" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <polygon class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <polygon class="triangle" points="10 265, 25 235, 40 265" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+      <svg id="shapes" height="300px">
+        <polygon onclick="rightshape(this)" class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <rect onclick="rightshape(this)" class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <circle onclick="rightshape(this)" class="ellipse" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="triangle" points="10 265, 25 235, 40 265" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
       </svg>
   </div>
 </body>
