@@ -79,22 +79,26 @@
   </div>
   <div id="left-menu">
     <span id="edit" onclick="edit(true)">&#9998;&#xFE0E;</span>
-      <svg id="scheme" height="300px">
-        <circle onclick="leftcolor(this)" cx="25" cy="50" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+      <svg id="scheme" height="450px">
         <circle onclick="leftcolor(this)" cx="25" cy="100" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
         <circle onclick="leftcolor(this)" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
         <circle onclick="leftcolor(this)" cx="25" cy="200" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
         <circle onclick="leftcolor(this)" cx="25" cy="250" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="300" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="350" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
+        <circle onclick="leftcolor(this)" cx="25" cy="400" r="15" stroke="#262626" stroke-weight="0.5" fill=""/>
       </svg>
   </div>
   <div id="right-menu">
     <span id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</span>
-      <svg id="shapes" height="300px">
-        <polygon onclick="rightshape(this)" class="pentagon" points="25 33, 41.66 44.66, 35.66 65.33, 15 65.33, 9.33 44.66" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <rect onclick="rightshape(this)" class="rect" x="10" y="85" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+      <svg id="shapes" height="450px">
+        <polygon onclick="rightshape(this)" class="triangle" points="10 115, 25 85, 40 115" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
         <circle onclick="rightshape(this)" class="ellipse" cx="25" cy="150" r="15" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <polygon onclick="rightshape(this)" class="hexagon" points="25 185.33, 40 193.33, 40 207.33, 25 215.33, 10 207.66, 10 193.33" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
-        <polygon onclick="rightshape(this)" class="triangle" points="10 265, 25 235, 40 265" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <rect onclick="rightshape(this)" class="rect" x="10" y="185" height="30" width="30" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="pentagon" points="25 235, 40 246, 35 265, 15 265, 10 246" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="hexagon" points="25 285, 40 293, 40 307, 25 315, 10 307, 10 293" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="octagon" points="20 335, 30 335, 40 345, 40 355, 30 365, 20 365, 10 355, 10 345" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
+        <polygon onclick="rightshape(this)" class="chevron" points="25 385, 40 415, 25 404.5, 10 415" stroke="#262626" stroke-weight="0.5" fill="#fffaf0"/>
       </svg>
   </div>
 </body>

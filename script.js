@@ -10,13 +10,13 @@ let rightselectedButton = null;
 
 let selectedScheme;
 
-const classic = ['#FF0000', '#FFFF00', '#008000', '#0000FF', '#EE82EE'];
-const vintage = ['#91A16A', '#B36154', '#738986', '#DDC173', '#8E8680'];
-const grayscale = ['#999999', '#777777', '#555555', '#333333', '#111111'];
-const pastel = ['#FDDFDF', '#FCF7DE', '#DEFDE0', '#DEF3FD', '#F0DEFD'];
-const protanopia = ['#BDB6AB', '#EDE6DE', '#D1D0DE', '#636D97', '#2E2B21'];
-const deuteranopia = ['#CDB1AD', '#FADFE2', '#DECBE3', '#5D6E93', '#342A1F'];
-const tritanopia = ['#DD4444', '#F48080', '#FFDCDC', '#2D676F', '#194B4F'];
+const classic = ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#0000FF', '#4B0082', '#EE82EE'];
+const vintage = ['#91A16A', '#B36154', '#738986', '#DDC173', '#8E8680', '#B29576', '#C3BDCE'];
+const grayscale = ['#EEEEEE', '#CCCCCC', '#999999', '#777777', '#555555', '#333333', '#111111'];
+const pastel = ['#F0CAD6', '#F8E0DE', '#FCF5DB', '#E8F1DE', '#D9E4FB', '#E0D3E3', '#FFF0F3'];
+const protanopia = ['#001159', '#2F437F', '#576696', '#848895', '#AEA17A', '#EAC243', '#FFD429'];
+const deuteranopia = ['#081951', '#2C3E7A', '#3E5294', '#636F97', '#878581', '#DFBE50', '#FFE138'];
+const tritanopia = ['#274750', '#007E7A', '#00A698', '#00C3A9', '#9EC8AC', '#FFC6AD', '#4E061A'];
 
 let text;
 let starting = true;
@@ -73,8 +73,8 @@ randomly = () => {
   $('.box').remove();
 
   for (letter of alltext) {
-    leftcolor(swatches[Math.floor(Math.random() * 5)]);
-    rightshape(shapes[Math.floor(Math.random() * 5)]);
+    leftcolor(swatches[Math.floor(Math.random() * 7)]);
+    rightshape(shapes[Math.floor(Math.random() * 7)]);
     letter.click();
   }
 }
@@ -82,7 +82,7 @@ randomly = () => {
 color = (sc) => {
   selectedScheme = eval(sc);
   const swatches = $('#scheme circle');
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     swatches[i].attributes.fill.value = selectedScheme[i];
   }
   if (leftselected) {
@@ -163,6 +163,12 @@ id = (text) => {
       else if (rightselectedShape == 'triangle') {
         $('#cement').html('<polygon name="triangle" class="' + this.id + '" points="' + triangle(h, w, midW) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
       }
+      else if (rightselectedShape == 'chevron') {
+        $('#cement').html('<polygon name="chevron" class="' + this.id + '" points="' + chevron(h, w, midW) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
+      }
+      else if (rightselectedShape == 'octagon') {
+        $('#cement').html('<polygon name="octagon" class="' + this.id + '" points="' + octagon(h, w) + '" stroke="#262626" stroke-width="0.5" fill="' + leftselectedColor +'"/>');
+      }
     }
   })
 }
@@ -240,12 +246,18 @@ polyresize = (tag, cla, w, h) => {
     else if (name == 'triangle') {
       $('polygon' + '.' + cla)[0].attributes.points.value = triangle(h, w, midW);
     }
+    else if (name == 'chevron') {
+      $('polygon' + '.' + cla)[0].attributes.points.value = chevron(h, w, midW);
+    }
+    else if (name == 'octagon') {
+      $('polygon' + '.' + cla)[0].attributes.points.value = octagon(h, w);
+    }
   }
 }
 
 pentagon = (h, w, midW, midH) => {
-  const qW = w * 0.3195;
-  const pH = h * 0.361
+  const qW = w * 0.266;
+  const pH = h * 0.366;
   return String(midW) + ' 0,' + String(w) + ' ' + String(pH) + ',' + String(midW + qW) + ' ' + String(h) + ',' + String(midW - qW) + ' ' + String(h) + ',' + '0 ' + String(pH);
 }
 
@@ -254,4 +266,17 @@ hexagon = (h, w, midW, midH) => {
   return String(midW) + ' 0,' + String(w) + ' ' + String(hp) + ',' + String(w) + ' ' + String(h - hp) + ',' + String(midW) + ' ' + String(h) + ',' + '0 ' + String(h - hp) + ',' + '0 ' + String(hp);
 }
 
-triangle = (h, w, midW) => String(midW) + ' 0,' + String(w) + ' ' + String(h) + ', ' + '0 ' + String(h);
+chevron = (h, w, midW) => {
+  const pH = h * 0.65;
+  return String(midW) + ' 0,' + String(w) + ' ' + String(h) + ',' + String(midW) + ' ' + String(pH) + ',' + '0 ' + String(h);
+}
+
+octagon = (h, w) => {
+  const w3 = w / 3.0;
+  const w23 = w * (2.0 / 3.0);
+  const h3 = h / 3.0;
+  const h23 = h * (2.0 / 3.0);
+  return String(w3) + ' 0,' + String(w23) + ' 0,' + String(w) + ' ' + String(h3) + ',' + String(w) + ' ' + String(h23) + ',' + String(w23) + ' ' + String(h) + ',' + String(w3) + ' ' + String(h) + ',' + '0 ' + String(h23) + ',' + '0 ' + String(h3);
+}
+
+triangle = (h, w, midW) => String(midW) + ' 0,' + String(w) + ' ' + String(h) + ',' + '0 ' + String(h);
