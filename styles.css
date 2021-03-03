@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Helvetica Neue LT 53 Extended';
+  src: URL('fonts/Helvetica Neue LT 53 Extended.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT 55 Roman';
+  src: URL('fonts/Helvetica Neue LT 55 Roman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT 57 Condensed';
+  src: URL('fonts/Helvetica Neue LT 57 Condensed.ttf') format('truetype');
+}
+
 body {
   position: absolute;
   background-color: #fffaf0;
@@ -6,7 +21,7 @@ body {
   right: 51.5px;
   height: 100%;
   padding: 0 15px 0 15px;
-  font-family: Helvetica;
+  font-family: 'Helvetica Neue LT 55 Roman';
 }
 
 text, p, a, a:visited {

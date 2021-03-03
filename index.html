@@ -57,19 +57,27 @@
   <div class="overlay4">
     <div class="overlay-content-4">
       <br>
+      <strong><label for="dropdown">Typeface:</label></strong>
+      <select onchange="font(this.value)" name="dropdown">
+        <option value="'Helvetica Neue LT 53 Extended'">Helvetica Neue LT 53 Extended</option>
+        <option value="'Helvetica Neue LT 55 Roman'" selected>Helvetica Neue LT 55 Roman</option>
+        <option value="'Helvetica Neue LT 57 Condensed'">Helvetica Neue LT 57 Condensed</option>
+      </select>
+      <br><br>
+      <strong><label for="colorscheme">Color Scheme:</label></strong>
+      <select onchange="color(this.value)" name="colorscheme">
+        <option value="classic" selected>Classic</option>
+        <option value="vintage">Vintage</option>
+        <option value="grayscale">Grayscale</option>
+        <option value="pastel">Pastel</option>
+        <option value="protanopia">Protanopia</option>
+        <option value="deuteranopia">Deuteranopia</option>
+        <option value="tritanopia">Tritanopia</option>
+      </select>
+      <br><br>
       <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding tile</label>
       <br><br>
       <input class="leftbutt" type="button" onclick="randomly();" value="Randomly tile all letters">
-      <br><br>
-      <strong>Color Scheme</strong>
-      <br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="classic" checked><label for="classic">Classic</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="vintage"><label for="vintage">Vintage</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="grayscale"><label for="grayscale">Grayscale</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="pastel"><label for="Pastel">Pastel</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="protanopia"><label for="protanopia">Protanopia</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="deuteranopia"><label for="deuteranopia">Deuteranopia</label><br>
-      <input onchange="color(this.id);" name="scheme" type="radio" id="tritanopia"><label for="tritanopia">Tritanopia</label>
       <br><br>
       <a href="https://github.com/jckdm/tiled" target="_blank">Check out the code!</a>
       <br><br>

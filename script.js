@@ -93,6 +93,12 @@ color = (sc) => {
   }
 }
 
+font = (f) => {
+  $('.box').remove();
+  $('p text').css('font-family', f);
+}
+
+
 id = (text) => {
   $('p').remove();
   $('.box').remove();
