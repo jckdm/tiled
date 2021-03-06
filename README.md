@@ -14,7 +14,7 @@ Tiled is a text abstraction tool by [Jack Adam](https://jackadam.cc) for ART 469
 4. Click a letter to place over it the chosen colored shape. Click again to remove that shape.
 
 The text can be edited by clicking the pencil icon.
-The color scheme can be changed by clicking the gear icon.
+The typeface and color scheme can be changed by clicking the gear icon.
 
 
 ## Credits
