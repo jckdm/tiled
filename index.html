@@ -77,7 +77,28 @@
       <br><br>
       <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding tile</label>
       <br><br>
-      <input class="leftbutt" type="button" onclick="randomly();" value="Randomly tile all letters">
+      <strong><label for="randomcolors">Tile all letters in:</label></strong>
+      <select id="rc" name="randomcolors">
+        <option value="all" selected>All colors</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+      <select id="rs">
+        <option value="all" selected>All shapes</option>
+        <option value="0">Triangles</option>
+        <option value="1">Circles</option>
+        <option value="2">Squares</option>
+        <option value="3">Penatagons</option>
+        <option value="4">Hexagons</option>
+        <option value="5">Octagons</option>
+        <option value="6">Chevrons</option>
+      </select>
+      <input class="leftbutt" type="button" onclick="randomly();" value="Go">
       <br><br>
       <a href="https://github.com/jckdm/tiled" target="_blank">Check out the code!</a>
       <br><br>

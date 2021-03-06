@@ -72,18 +72,48 @@ randomly = () => {
   const shapes = $('#shapes')[0].children;
   $('.box').remove();
 
-  for (letter of alltext) {
-    leftcolor(swatches[Math.floor(Math.random() * 7)]);
-    rightshape(shapes[Math.floor(Math.random() * 7)]);
-    letter.click();
+  const rs = $('#rs')[0].value;
+  const rc = $('#rc')[0].value;
+
+  if (rs == 'all' && rc == 'all') {
+    for (letter of alltext) {
+      leftcolor(swatches[Math.floor(Math.random() * 7)]);
+      rightshape(shapes[Math.floor(Math.random() * 7)]);
+      letter.click();
+    }
+  }
+  else if (rs == 'all') {
+    for (letter of alltext) {
+      leftcolor(swatches[+rc]);
+      rightshape(shapes[Math.floor(Math.random() * 7)]);
+      letter.click();
+    }
+  }
+  else if (rc == 'all') {
+    for (letter of alltext) {
+      leftcolor(swatches[Math.floor(Math.random() * 7)]);
+      rightshape(shapes[+rs]);
+      letter.click();
+    }
+  }
+  else {
+    for (letter of alltext) {
+      leftcolor(swatches[+rc]);
+      rightshape(shapes[+rs]);
+      letter.click();
+    }
   }
 }
 
 color = (sc) => {
   selectedScheme = eval(sc);
   const swatches = $('#scheme circle');
+  const randcolmen = $('#rc')[0].children;
   for (let i = 0; i < 7; i++) {
     swatches[i].attributes.fill.value = selectedScheme[i];
+    randcolmen[i+1].value = i;
+    randcolmen[i+1].text = selectedScheme[i];
+    randcolmen[i+1].style.backgroundColor = selectedScheme[i];
   }
   if (leftselected) {
     leftselected = false;
