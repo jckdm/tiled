@@ -75,11 +75,14 @@ randomly = () => {
   const rs = $('#rs')[0].value;
   const rc = $('#rc')[0].value;
 
+  const c = ($('#hidetext')[0].checked) ? '#262626' : '#FFFAF0';
+
   if (rs == 'all' && rc == 'all') {
     for (letter of alltext) {
       leftcolor(swatches[Math.floor(Math.random() * 7)]);
       rightshape(shapes[Math.floor(Math.random() * 7)]);
       letter.click();
+      letter.style.color = c;
     }
   }
   else if (rs == 'all') {
@@ -87,6 +90,7 @@ randomly = () => {
       leftcolor(swatches[+rc]);
       rightshape(shapes[Math.floor(Math.random() * 7)]);
       letter.click();
+      letter.style.color = c;
     }
   }
   else if (rc == 'all') {
@@ -94,6 +98,7 @@ randomly = () => {
       leftcolor(swatches[Math.floor(Math.random() * 7)]);
       rightshape(shapes[+rs]);
       letter.click();
+      letter.style.color = c;
     }
   }
   else {
@@ -101,6 +106,7 @@ randomly = () => {
       leftcolor(swatches[+rc]);
       rightshape(shapes[+rs]);
       letter.click();
+      letter.style.color = c;
     }
   }
 }
