@@ -34,7 +34,8 @@ go = () => {
       return;
     }
   }
-  text = $('#inp')[0].value.split('\n');
+  const val = $('#inp')[0].value.split('\n');
+  text = (val == '') ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a magna ante. Morbi ut ligula enim. Phasellus vulputate dapibus molestie. Integer tristique nisl sed libero elementum, eget pretium velit varius. Donec rhoncus tellus sed eros laoreet semper. Curabitur ultrices turpis id tortor mollis hendrerit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sodales nunc eget elit iaculis tempor.'.split('\n') : val;
   if (text != '') {
     cancel();
     if (starting) { $('.overlay3').css('visibility', 'visible'); }
@@ -74,8 +75,6 @@ randomly = () => {
 
   const rs = $('#rs')[0].value;
   const rc = $('#rc')[0].value;
-
-  const c = ($('#hidetext')[0].checked) ? '#262626' : '#FFFAF0';
 
   if (rs == 'all' && rc == 'all') {
     for (letter of alltext) {
