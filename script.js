@@ -108,6 +108,7 @@ randomly = () => {
       letter.style.color = c;
     }
   }
+  $('#unhide')[0].value = (alltext.css('color') == 'rgb(38, 38, 38)') ? 'Hide letters' : 'Show hidden letters';
 }
 
 color = (sc) => {
@@ -128,11 +129,26 @@ color = (sc) => {
   }
 }
 
+settings = () => {
+  $('.overlay4').css('visibility', 'visible');
+  $('#unhide')[0].value = ($('p text').css('color') == 'rgb(38, 38, 38)') ? 'Hide letters' : 'Show hidden letters';
+}
+
+unhide = () => {
+  if ($('p text').css('color') == 'rgb(38, 38, 38)') {
+    $('p text').css('color', '#FFFAF0');
+    $('#unhide')[0].value = 'Show hidden letters';
+  }
+  else {
+    $('p text').css('color', '#262626');
+    $('#unhide')[0].value = 'Hide letters';
+  }
+}
+
 font = (f) => {
   $('.box').remove();
   $('p text').css('font-family', f);
 }
-
 
 id = (text) => {
   $('p').remove();

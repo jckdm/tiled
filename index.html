@@ -84,6 +84,7 @@
       </select>
       <br><br>
       <input id="hidetext" type="checkbox"/><label for="hidetext">Hide letter when adding tile</label>
+      <input class="leftbutt" type="button" id="unhide" onclick="unhide();" value="">
       <br><br>
       <strong><label for="randomcolors">Tile all letters in:</label></strong>
       <select id="rc" name="randomcolors">
@@ -127,7 +128,7 @@
       </svg>
   </div>
   <div id="right-menu">
-    <span id="settings" onclick="$('.overlay4').css('visibility', 'visible');">&#9881;&#xFE0E;</span>
+    <span id="settings" onclick="settings();">&#9881;&#xFE0E;</span>
       <svg id="shapes" height="450px">
         <polygon onclick="rightshape(this)" class="triangle" points="10 115, 25 85, 40 115" stroke="#262626" stroke-width="0.5" fill="#fffaf0"/>
         <circle onclick="rightshape(this)" class="ellipse" cx="25" cy="150" r="15" stroke="#262626" stroke-width="0.5" fill="#fffaf0"/>
