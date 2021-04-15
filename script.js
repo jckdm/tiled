@@ -58,7 +58,7 @@ cancel = () => {
 
 edit = (x) => {
   $('.overlay2').css('visibility', 'visible');
-  $('#enthead')[0].innerText = 'Edit text below.';
+  $('#enthead')[0].innerText = 'Edit text.';
   $('#sub')[0].value = 'Update Text';
   if (starting) {
     $('#editme')[0].remove();
