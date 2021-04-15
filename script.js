@@ -249,27 +249,27 @@ id = (text) => {
 }
 
 const SHAPES = {
-  'pentagon': pentagon = (h, w, midW) => {
+  'pentagon': (h, w, midW) => {
     const qW = w * 0.266;
     const pH = h * 0.366;
     return `${midW} 0, ${w} ${pH}, ${midW + qW} ${h}, ${midW - qW} ${h}, 0 ${pH}`
   },
-  'hexagon': hexagon = (h, w, midW) => {
+  'hexagon': (h, w, midW) => {
     const hp = h * 0.266;
     return `${midW} 0, ${w} ${hp}, ${w} ${h - hp}, ${midW} ${h}, 0 ${h - hp}, 0 ${hp}`
   },
-  'chevron': chevron = (h, w, midW) => {
+  'chevron': (h, w, midW) => {
     const pH = h * 0.65;
     return `${midW} 0, ${w} ${h}, ${midW} ${pH}, 0 ${h}`
   },
-  'octagon': octagon = (h, w) => {
+  'octagon': (h, w) => {
     const w3 = w / 3.0;
     const w23 = w * (2.0 / 3.0);
     const h3 = h / 3.0;
     const h23 = h * (2.0 / 3.0);
     return `${w3} 0, ${w23} 0, ${w} ${h3}, ${w} ${h23}, ${w23} ${h}, ${w3} ${h}, 0 ${h23}, 0 ${h3}`
   },
-  'triangle': triangle = (h, w, midW) => `${midW} 0, ${w} ${h}, 0 ${h}`
+  'triangle': (h, w, midW) => `${midW} 0, ${w} ${h}, 0 ${h}`
 }
 
 letvis = (i) => {
